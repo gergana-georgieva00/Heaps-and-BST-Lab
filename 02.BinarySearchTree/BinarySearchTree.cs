@@ -5,7 +5,22 @@
     public class BinarySearchTree<T> : IBinarySearchTree<T>
         where T : IComparable<T>
     {
-        public BinarySearchTree() { }
+        private class Node
+        {
+            public Node(T value)
+            {
+                this.Value = value;
+            }
+
+            public T Value { get; set; }
+            public Node Left { get; set; }
+            public Node Right { get; set; }
+        }
+
+        public BinarySearchTree() 
+        { 
+
+        }
 
         public bool Contains(T element)
         {
@@ -14,7 +29,7 @@
 
         public void EachInOrder(Action<T> action)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Insert(T element)
