@@ -28,9 +28,18 @@
             return sb.ToString();
         }
 
-        private void PreOrderDfs(StringBuilder sb, int indent, BinaryTree<T> binaryTree)
+        private void PreOrderDfs(StringBuilder sb, int indent, IAbstractBinaryTree<T> binaryTree)
         {
             sb.Append(new string(' ', indent)).AppendLine(binaryTree.Value.ToString());
+
+            if (binaryTree.LeftChild != null)
+            {
+                this.PreOrderDfs(sb, indent + 2, binaryTree.LeftChild);
+            }
+            if (binaryTree.RightChild != null)
+            {
+                this.PreOrderDfs(sb, indent + 2, binaryTree.RightChild);
+            }
         }
 
         public void ForEachInOrder(Action<T> action)
