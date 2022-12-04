@@ -34,7 +34,9 @@
 
         private void Swap(int index, int parentIndex)
         {
-            throw new NotImplementedException();
+            var temp = this.elements[index];
+            this.elements[index] = this.elements[parentIndex];
+            this.elements[parentIndex] = temp;
         }
 
         private bool IsGreater(int index, int parentIndex)
