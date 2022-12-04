@@ -12,12 +12,38 @@
             this.elements = new List<T>();
         }
 
-        public int Size => throw new NotImplementedException();
+        public int Size => this.elements.Count;
 
         public void Add(T element)
         {
+            this.elements.Add(element);
+            this.HeapUp(this.elements.Count - 1);
+        }
+
+        private void HeapUp(int index)
+        {
+            var parentIndex = this.GetParentIndex(index);
+
+            while (index > 0 && IsGreater(index, parentIndex))
+            {
+                this.Swap(index, parentIndex);
+                index = parentIndex;
+                parentIndex = this.GetParentIndex(index);
+            }
+        }
+
+        private void Swap(int index, int parentIndex)
+        {
             throw new NotImplementedException();
         }
+
+        private bool IsGreater(int index, int parentIndex)
+        {
+            throw new NotImplementedException();
+        }
+
+        private int GetParentIndex(int index)
+            => (index - 1) / 2;
 
         public T ExtractMax()
         {
