@@ -40,9 +40,7 @@
         }
 
         private bool IsGreater(int index, int parentIndex)
-        {
-            throw new NotImplementedException();
-        }
+            => this.elements[index].CompareTo(this.elements[parentIndex]) > 0;
 
         private int GetParentIndex(int index)
             => (index - 1) / 2;
