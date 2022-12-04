@@ -45,7 +45,25 @@
 
         public void Insert(T element)
         {
-            throw new NotImplementedException();
+            this.root = this.Insert(element, this.root);
+        }
+
+        private Node Insert(T element, Node root)
+        {
+            if (root == null)
+            {
+                root = new Node(element);
+            }
+            else if (element.CompareTo(root.Value) < 0)
+            {
+                root.Left = this.Insert(element, root.Left);
+            }
+            else if (element.CompareTo(root.Value) > 0)
+            {
+                root.Right = this.Insert(element, root.Right);
+            }
+
+            return root;
         }
 
         public IBinarySearchTree<T> Search(T element)
