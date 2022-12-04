@@ -62,6 +62,18 @@
 
         private void HeapDown(int index)
         {
+            var biggerChildIndex = this.GetBiggerChildIndex(index);
+
+            while (index < this.elements.Count && this.IsGreater((int)biggerChildIndex, index))
+            {
+                this.Swap((int)biggerChildIndex, index);
+                index = (int)biggerChildIndex;
+                biggerChildIndex = this.GetBiggerChildIndex(index);
+            }
+        }
+
+        private object GetBiggerChildIndex(int index)
+        {
             throw new NotImplementedException();
         }
 
