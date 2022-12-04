@@ -17,10 +17,9 @@
             public Node Right { get; set; }
         }
 
-        public BinarySearchTree() 
-        { 
+        public BinarySearchTree() { }
 
-        }
+        private Node root;
 
         public bool Contains(T element)
         {
@@ -29,7 +28,19 @@
 
         public void EachInOrder(Action<T> action)
         {
-            
+            this.EachInOrder(action, this.root);
+        }
+
+        private void EachInOrder(Action<T> action, Node root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            this.EachInOrder(action, root.Left);
+            action(root.Value);
+            this.EachInOrder(action, root.Right);
         }
 
         public void Insert(T element)
