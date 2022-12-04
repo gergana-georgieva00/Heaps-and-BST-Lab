@@ -47,6 +47,21 @@
 
         public T ExtractMax()
         {
+            if (this.elements.Count == 0)
+            {
+                throw new InvalidOperationException();
+            }
+
+            T element = this.elements[0];
+            this.Swap(0, this.elements.Count - 1);
+            this.elements.RemoveAt(this.elements.Count - 1);
+            this.HeapDown(0);
+
+            return element;
+        }
+
+        private void HeapDown(int index)
+        {
             throw new NotImplementedException();
         }
 
