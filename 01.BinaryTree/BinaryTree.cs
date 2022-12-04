@@ -44,7 +44,9 @@
 
         public void ForEachInOrder(Action<T> action)
         {
-            throw new NotImplementedException();
+            this.LeftChild.ForEachInOrder(action);
+            action(this.Value);
+            this.RightChild.ForEachInOrder(action);
         }
 
         public IEnumerable<IAbstractBinaryTree<T>> InOrder()
