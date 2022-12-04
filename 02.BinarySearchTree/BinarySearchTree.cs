@@ -23,7 +23,30 @@
 
         public bool Contains(T element)
         {
-            throw new NotImplementedException();
+            return this.FindNode(element) != null;
+        }
+
+        private Node FindNode(T element)
+        {
+            var node = this.root;
+
+            while (node != null)
+            {
+                if (element.CompareTo(node.Value) < 0)
+                {
+                    node = node.Left;
+                }
+                else if (element.CompareTo(node.Value) > 0)
+                {
+                    node = node.Right;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return node;
         }
 
         public void EachInOrder(Action<T> action)
