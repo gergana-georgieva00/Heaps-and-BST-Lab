@@ -44,9 +44,17 @@
 
         public void ForEachInOrder(Action<T> action)
         {
-            this.LeftChild.ForEachInOrder(action);
+            if (this.LeftChild != null)
+            {
+                this.LeftChild.ForEachInOrder(action);
+            }
+
             action(this.Value);
-            this.RightChild.ForEachInOrder(action);
+
+            if (RightChild != null)
+            {
+                this.RightChild.ForEachInOrder(action);
+            }
         }
 
         public IEnumerable<IAbstractBinaryTree<T>> InOrder()
