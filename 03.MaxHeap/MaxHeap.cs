@@ -64,17 +64,39 @@
         {
             var biggerChildIndex = this.GetBiggerChildIndex(index);
 
-            while (index < this.elements.Count && this.IsGreater((int)biggerChildIndex, index))
+            while (IsIndexValid(index) && this.IsGreater(biggerChildIndex, index))
             {
-                this.Swap((int)biggerChildIndex, index);
-                index = (int)biggerChildIndex;
+                this.Swap(biggerChildIndex, index);
+                index = biggerChildIndex;
                 biggerChildIndex = this.GetBiggerChildIndex(index);
             }
         }
 
-        private object GetBiggerChildIndex(int index)
+        private bool IsIndexValid(int index)
+            => index >= 0 && index < this.elements.Count;
+
+        private int GetBiggerChildIndex(int index)
         {
-            throw new NotImplementedException();
+            var firstChildIndex = index * 2 + 1;
+            var secondChildIndex = index * 2 + 2;
+
+            if (secondChildIndex < this.elements.Count)
+            {
+                if (this.IsGreater(firstChildIndex, secondChildIndex))
+                {
+                    return firstChildIndex;
+                }
+
+                return secondChildIndex;
+            }
+            else if (firstChildIndex < this.elements.Count)
+            {
+                return firstChildIndex;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         public T Peek()
