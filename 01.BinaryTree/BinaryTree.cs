@@ -43,8 +43,14 @@
             var resultList = new List<IAbstractBinaryTree<T>>();
 
             resultList.Add(this);
-            resultList.AddRange(this.LeftChild.PreOrder());
-            resultList.AddRange(this.RightChild.PreOrder());
+            if (this.LeftChild != null)
+            {
+                resultList.AddRange(this.LeftChild.PreOrder());
+            }
+            if (RightChild != null)
+            {
+                resultList.AddRange(this.RightChild.PreOrder());
+            }
 
             return resultList;
         }
