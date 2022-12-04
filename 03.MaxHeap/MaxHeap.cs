@@ -5,6 +5,13 @@
 
     public class MaxHeap<T> : IAbstractHeap<T> where T : IComparable<T>
     {
+        private List<T> elements;
+
+        public MaxHeap()
+        {
+            this.elements = new List<T>();
+        }
+
         public int Size => throw new NotImplementedException();
 
         public void Add(T element)
